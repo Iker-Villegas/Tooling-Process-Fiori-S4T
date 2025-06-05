@@ -1,0 +1,187 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "toolingpreparation",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:ovp",
+      "version": "1.17.1",
+      "toolsId": "03c890dc-0dff-494d-94a9-ad219b3ccdb9"
+    },
+    "dataSources": {
+      "YST_XCE_MM_TOOL_UI_PREP_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='YST_XCE_MM_TOOL_UI_PREP_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService/YST_XCE_MM_TOOL_UI_PREP_VAN.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/YST_XCE_MM_TOOL_UI_PREP/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "YST_XCE_MM_TOOL_UI_PREP_VAN",
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "tooling_preparation-Preparation": {
+          "semanticObject": "tooling_preparation",
+          "action": "Preparation",
+          "title": "{{tooling_preparation-Preparation.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.108.9",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ovp": {},
+        "sap.ui.rta": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "toolingpreparation.i18n.i18n"
+        }
+      },
+      "mainModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    }
+  },
+  "sap.ovp": {
+    "globalFilterModel": "mainModel",
+    "globalFilterEntityType": "BlockedStockSmartFltrType",
+    "containerLayout": "resizable",
+    "enableLiveFilter": true,
+    "considerAnalyticalParameters": false,
+    "cards": {
+      "BlockedStock_Card_ID": {
+        "template": "sap.ovp.cards.charts.analytical",
+        "model": "mainModel",
+        "settings": {
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#BlockedStock_Chart_Qualifier",
+          "entitySet": "BlockedStockOvp",
+          "title": "Blocked Stock",
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
+          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#MaterialGroup_DataPoint_Qualifier",
+          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#BlockedStock_Variant_Qualifier"
+        }
+      },
+      "ToolLifetime_CardID": {
+        "template": "sap.ovp.cards.list",
+        "model": "mainModel",
+        "settings": {
+          "listFlavor": "standard",
+          "listType": "extended",
+          "entitySet": "ToolLifetimeOvp",
+          "title": "Tool Lifetime",
+          "tabs": [
+            {
+              "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#ToolLifetime_Qualifier",
+              "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Remaining_Variant_Qualifier",
+              "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#NoRemainingUses"
+            }
+          ],
+          "sortBy": "REPLACE_WITH_SORT_BY_TYPE",
+          "sortOrder": "ascending"
+        }
+      },
+      "QuickLinks_Card_ID": {
+        "settings": {
+          "listFlavor": "standard",
+          "staticContent": [
+            {}
+          ],
+          "title": "Quick Links",
+          "listType": "extended"
+        },
+        "model": "mainModel",
+        "template": "sap.ovp.cards.list"
+      }
+    },
+    "chartSettings": {}
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  }
+}

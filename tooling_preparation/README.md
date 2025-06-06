@@ -1,7 +1,7 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Thu Jun 05 2025 15:18:14 GMT+0200 (Central European Summer Time)|
+|**Generation Date and Time**<br>Fri Jun 06 2025 10:26:48 GMT+0200 (Central European Summer Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.17.1|
 |**Generation Platform**<br>Visual Studio Code|
@@ -20,7 +20,7 @@
 
 ## tooling_preparation
 
-S4T- XCE-MM: Tooling Preparation
+S4T-XCE-MM: Tooling Preparation App
 
 ### Starting the generated app
 

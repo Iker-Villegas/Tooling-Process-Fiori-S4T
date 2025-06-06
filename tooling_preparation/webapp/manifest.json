@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:ovp",
       "version": "1.17.1",
-      "toolsId": "03c890dc-0dff-494d-94a9-ad219b3ccdb9"
+      "toolsId": "482224b4-1942-43d6-b656-11bc8937eaaf"
     },
     "dataSources": {
       "YST_XCE_MM_TOOL_UI_PREP_VAN": {
@@ -134,48 +134,36 @@
     "enableLiveFilter": true,
     "considerAnalyticalParameters": false,
     "cards": {
-      "BlockedStock_Card_ID": {
+      "Card_01": {
         "template": "sap.ovp.cards.charts.analytical",
         "model": "mainModel",
         "settings": {
-          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#BlockedStock_Chart_Qualifier",
+          "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#NumberToolsColumn",
           "entitySet": "BlockedStockOvp",
           "title": "Blocked Stock",
-          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification",
-          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#MaterialGroup_DataPoint_Qualifier",
-          "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#BlockedStock_Variant_Qualifier"
+          "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ToToolsAnalysis",
+          "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#SupplierColumnDataPoint"
         }
       },
-      "ToolLifetime_CardID": {
+      "Card_02": {
         "template": "sap.ovp.cards.list",
         "model": "mainModel",
         "settings": {
           "listFlavor": "standard",
-          "listType": "extended",
+          "listType": "condensed",
           "entitySet": "ToolLifetimeOvp",
           "title": "Tool Lifetime",
           "tabs": [
             {
-              "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#ToolLifetime_Qualifier",
-              "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Remaining_Variant_Qualifier",
-              "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#NoRemainingUses"
+              "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#NoRemainingUses",
+              "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#RemainUsesSelection",
+              "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ToToolLifetimeManage",
+              "value": "No Rem Uses"
             }
           ],
-          "sortBy": "REPLACE_WITH_SORT_BY_TYPE",
+          "sortBy": "Material",
           "sortOrder": "ascending"
         }
-      },
-      "QuickLinks_Card_ID": {
-        "settings": {
-          "listFlavor": "standard",
-          "staticContent": [
-            {}
-          ],
-          "title": "Quick Links",
-          "listType": "extended"
-        },
-        "model": "mainModel",
-        "template": "sap.ovp.cards.list"
       }
     },
     "chartSettings": {}

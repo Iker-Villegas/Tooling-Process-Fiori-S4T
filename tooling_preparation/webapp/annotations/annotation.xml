@@ -11,19 +11,19 @@
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
             <Annotations Target="cds_yst_xce_mm_tool_ui_prep.BlockedStockOvpType">
-                <Annotation Term="UI.Chart" Qualifier="BlockedStock_Chart_Qualifier">
+                <Annotation Term="UI.Chart" Qualifier="NumberToolsColumn">
                     <Record Type="UI.ChartDefinitionType">
-                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/ColumnStacked"/>
                         <PropertyValue Property="Title" String="Blocked Stock"/>
                         <PropertyValue Property="Dimensions">
                             <Collection>
-                                <PropertyPath>NumberOfTools</PropertyPath>
+                                <PropertyPath>MaterialGroupName</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="DimensionAttributes">
                             <Collection>
                                 <Record Type="UI.ChartDimensionAttributeType">
-                                    <PropertyValue Property="Dimension" PropertyPath="NumberOfTools"/>
+                                    <PropertyValue Property="Dimension" PropertyPath="MaterialGroupName"/>
                                     <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
                                 </Record>
                             </Collection>
@@ -43,48 +43,65 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
-                <Annotation Term="UI.PresentationVariant" Qualifier="BlockedStock_Variant_Qualifier">
+                <Annotation Term="UI.PresentationVariant" Qualifier="SupplierQualifier">
                     <Record>
                         <PropertyValue Property="Visualizations">
                             <Collection>
-                                <AnnotationPath>@UI.Chart#BlockedStock_Chart_Qualifier</AnnotationPath>
+                                <AnnotationPath>@UI.Chart#NumberToolsColumn</AnnotationPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="SortOrder">
                             <Collection>
                                 <Record Type="Common.SortOrderType">
-                                    <PropertyValue Property="Property" PropertyPath="NumberOfTools"/>
-                                    <PropertyValue Property="Descending" Bool="false"/>
+                                    <PropertyValue Property="Property" PropertyPath="Supplier"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
+                        <PropertyValue Property="MaxItems" Int="2"/>
                     </Record>
                 </Annotation>
-                <Annotation Term="UI.DataPoint" Qualifier="MaterialGroup_DataPoint_Qualifier">
-                    <Record Type="UI.DataPointType">
-                        <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information"/>
-                        <PropertyValue Property="Value" Path="MaterialGroup"/>
-                        <PropertyValue Property="Title" String="Material Group"/>
-                    </Record>
-                </Annotation>
-            </Annotations>
-            <Annotations Target="cds_yst_xce_mm_tool_ui_prep.ToolLifetimeOvpType">
-                <Annotation Term="UI.DataPoint" Qualifier="ToolLifetime_DataPoint_Qualifier">
+                <Annotation Term="UI.DataPoint" Qualifier="SupplierColumnDataPoint">
                     <Record Type="UI.DataPointType">
                         <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Critical"/>
-                        <PropertyValue Property="Value" Path="ToolLifetime"/>
-                        <PropertyValue Property="Title" String="No Rem. Uses"/>
+                        <PropertyValue Property="Value" Path="Supplier"/>
+                        <PropertyValue Property="Title" String="Supplier"/>
                     </Record>
                 </Annotation>
-                <Annotation Term="UI.LineItem" Qualifier="ToolLifetime_Qualifier">
+                <Annotation Term="UI.Identification" Qualifier="ToToolsAnalysis">
                     <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="RemainingUsesOVP"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="Tools"/>
+                            <PropertyValue Property="Action" String="analysis"/>
                         </Record>
                     </Collection>
                 </Annotation>
-                <Annotation Term="UI.SelectionVariant" Qualifier="Remaining_Variant_Qualifier">
+            </Annotations>
+            <Annotations Target="cds_yst_xce_mm_tool_ui_prep.ToolLifetimeOvpType">
+                <Annotation Term="UI.DataPoint" Qualifier="ToolLifetimeNumberUses">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Critical"/>
+                        <PropertyValue Property="Value" Path="ToolLifetime"/>
+                        <PropertyValue Property="Title" String="No Rem Uses"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="RemainToolUses">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Material"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ToolLifetime"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="RemainingUsesOVP"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="RemainUsesSelection">
                     <Record>
                         <PropertyValue Property="SelectOptions">
                             <Collection>
@@ -95,29 +112,20 @@
                                             <Record Type="UI.SelectionRangeType">
                                                 <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
                                                 <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
-                                                <PropertyValue Property="Low" String="No Rem. Uses"/>
+                                                <PropertyValue Property="Low" String="Remaining Uses"/>
                                             </Record>
                                         </Collection>
                                     </PropertyValue>
                                 </Record>
                             </Collection>
                         </PropertyValue>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="UI.Parameter">
-                                    <PropertyValue Property="PropertyName" PropertyPath="RemainingUsesOVP"/>
-                                    <PropertyValue Property="PropertyValue" String="No Rem. Uses"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
                     </Record>
                 </Annotation>
-                <Annotation Term="UI.Identification" Qualifier="ToolLifetime_Qualifier">
+                <Annotation Term="UI.Identification" Qualifier="ToToolLifetimeManage">
                     <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="RemainingUsesOVP"/>
-                            <PropertyValue Property="Label" String="Rem uses"/>
-                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ToolLifetime"/>
+                            <PropertyValue Property="Action" String="Manage"/>
                         </Record>
                     </Collection>
                 </Annotation>

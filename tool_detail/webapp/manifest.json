@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.17.1",
-      "toolsId": "45706e3b-64ef-49c3-889e-02b831df5dc8"
+      "toolsId": "f94fd2c9-c6c4-4c11-943b-861dbbec5d0e"
     },
     "dataSources": {
       "YST_XCE_MM_TOOL_UI_TOOL_VAN": {
@@ -45,10 +45,10 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "tool_details-Details": {
-          "semanticObject": "tool_details",
-          "action": "Details",
-          "title": "{{tool_details-Details.flpTitle}}",
+        "tool_detail-Detail": {
+          "semanticObject": "tool_detail",
+          "action": "Detail",
+          "title": "{{tool_detail-Detail.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"

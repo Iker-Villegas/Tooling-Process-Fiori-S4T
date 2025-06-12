@@ -1,7 +1,7 @@
 {
   "_version": "1.48.0",
   "sap.app": {
-    "id": "toolorder",
+    "id": "toolforproduction",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,14 +13,14 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.17.1",
-      "toolsId": "27322777-e605-4022-8d4d-0955aa554380"
+      "toolsId": "2aa6e4a6-594e-415d-8b57-e2798ddaeb45"
     },
     "dataSources": {
-      "YST_XCE_MM_TOOL_UI_CUSTSER_VAN": {
-        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='YST_XCE_MM_TOOL_UI_CUSTSER_VAN',Version='0001')/$value/",
+      "YST_XCE_MM_TOOL_UI_PREP_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='YST_XCE_MM_TOOL_UI_PREP_VAN',Version='0001')/$value/",
         "type": "ODataAnnotation",
         "settings": {
-          "localUri": "localService/mainService/YST_XCE_MM_TOOL_UI_CUSTSER_VAN.xml"
+          "localUri": "localService/mainService/YST_XCE_MM_TOOL_UI_PREP_VAN.xml"
         }
       },
       "annotation": {
@@ -31,11 +31,11 @@
         }
       },
       "mainService": {
-        "uri": "/sap/opu/odata/sap/YST_XCE_MM_TOOL_UI_CUSTSER/",
+        "uri": "/sap/opu/odata/sap/YST_XCE_MM_TOOL_UI_PREP/",
         "type": "OData",
         "settings": {
           "annotations": [
-            "YST_XCE_MM_TOOL_UI_CUSTSER_VAN",
+            "YST_XCE_MM_TOOL_UI_PREP_VAN",
             "annotation"
           ],
           "localUri": "localService/mainService/metadata.xml",
@@ -45,10 +45,10 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "tool_order-Order": {
-          "semanticObject": "tool_order",
-          "action": "Order",
-          "title": "{{tool_order-Order.flpTitle}}",
+        "tool_for_producion-Production": {
+          "semanticObject": "tool_for_producion",
+          "action": "Production",
+          "title": "{{tool_for_producion-Production.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -95,7 +95,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "toolorder.i18n.i18n"
+          "bundleName": "toolforproduction.i18n.i18n"
         }
       },
       "": {
@@ -133,8 +133,8 @@
       "showDraftToggle": false
     },
     "pages": {
-      "ListReport|ToolSalesOrdFltr": {
-        "entitySet": "ToolSalesOrdFltr",
+      "ListReport|MfgOrderToolsOvp": {
+        "entitySet": "MfgOrderToolsOvp",
         "component": {
           "name": "sap.suite.ui.generic.template.ListReport",
           "list": true,
@@ -153,8 +153,8 @@
           }
         },
         "pages": {
-          "ObjectPage|ToolSalesOrdFltr": {
-            "entitySet": "ToolSalesOrdFltr",
+          "ObjectPage|MfgOrderToolsOvp": {
+            "entitySet": "MfgOrderToolsOvp",
             "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
             "component": {
               "name": "sap.suite.ui.generic.template.ObjectPage"

@@ -17,8 +17,8 @@ builder:
           url: https://aiovs4t0.aio-sap.os.itelligence.de:44300
           client: '100'
         app:
-          name: YST_XCE_MM_TOOL
+          name: YST_TOOL_ORDER
           package: YST_XCE_MM_TOOL
-          transport: S4TK900121
+          transport: S4TK900155
         exclude:
           - /test/

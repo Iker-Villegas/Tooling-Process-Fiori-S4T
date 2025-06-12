@@ -1,27 +1,26 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Thu Jun 12 2025 14:28:06 GMT+0200 (Central European Summer Time)|
+|**Generation Date and Time**<br>Thu Jun 12 2025 14:33:56 GMT+0200 (Central European Summer Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.17.1|
 |**Generation Platform**<br>Visual Studio Code|
 |**Template Used**<br>List Report Page V2|
 |**Service Type**<br>SAP System (ABAP On Premise)|
-|**Service URL**<br>https://aiovs4t0.aio-sap.os.itelligence.de:44300/sap/opu/odata/sap/YST_XCE_MM_TOOL_UI_TOOL|
-|**Module Name**<br>tool_detail|
-|**Application Title**<br>Tool Detail|
+|**Service URL**<br>https://aiovs4t0.aio-sap.os.itelligence.de:44300/sap/opu/odata/sap/YST_XCE_MM_TOOL_UI_PREP|
+|**Module Name**<br>tool_lifetime|
+|**Application Title**<br>Tool Lifetime|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.108.9|
 |**Enable Code Assist Libraries**<br>False|
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
-|**Main Entity**<br>YST_XCE_MM_TOOL_C_D_TOOL|
-|**Navigation Entity**<br>None|
+|**Main Entity**<br>ToolLifetimeOvp|
 
-## tool_detail
+## tool_lifetime
 
-S4T-XCE-MM: Tool Detail
+S4T-XCE-MM: Tool Lifetime
 
 ### Starting the generated app
 
